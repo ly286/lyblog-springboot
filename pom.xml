@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.5</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+
+    <groupId>com.ly</groupId>
+    <artifactId>lyblog-springboot</artifactId>
+    <version>${revision}</version>
+    <name>lyblog-springboot</name>
+    <!-- 项目描述 -->
+    <description>前后端分离博客lyblog-springboot by ly</description>
+
+    <!-- 多模块项目父工程打包模式必须指定为 pom -->
+    <packaging>pom</packaging>
+
+    <!-- 子模块管理 -->
+    <modules>
+        <!-- 入口模块 -->
+        <module>lyblog-web</module>
+        <!-- 管理模块 -->
+        <module>lyblog-admin</module>
+        <!-- 通用模块 -->
+        <module>lyblog-common</module>
+    </modules>
+
+    <url/>
+
+
+    <licenses>
+        <license/>
+    </licenses>
+
+
+    <developers>
+        <developer/>
+    </developers>
+
+
+    <scm>
+        <connection/>
+        <developerConnection/>
+        <tag/>
+        <url/>
+    </scm>
+
+    <!-- 版本号统一管理 -->
+    <properties>
+        <!-- 项目版本号 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>21</java.version>
+        <revision>0.0.1-SNAPSHOT</revision>
+        <!-- maven相关 -->
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <!-- 各依赖版本号 -->
+        <guava.version>33.3.1-jre</guava.version>
+    </properties>
+
+
+    <dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>com.ly</groupId>
+            <artifactId>lyblog-admin</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ly</groupId>
+            <artifactId>lyblog-common</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- 常用工具库 -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+    </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
