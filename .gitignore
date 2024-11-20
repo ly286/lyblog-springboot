@@ -31,3 +31,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+**/target/
+*.class
+*Test.java
+**/test/
+src/main/resources/application-dev.yml
