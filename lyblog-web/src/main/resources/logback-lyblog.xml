@@ -8,14 +8,14 @@
 <!-- 自定义日志输出路径，以及日志名称前缀 -->
 <property name="LOG_FILE" value="/app/lyblog/logs/${appName}.%d{yyyy-MM-dd}"/>
 <!--<property name="LOG_FILE" value="D:\\JAVA\\log\\${appName}.%d{yyyy-MM-dd}"/>-->
-<property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n"/>
+<property name="FILE_LOG_PATTERN" value="[TraceId: %X{traceId}] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n"/>
 <!--<property name="CONSOLE_LOG_PATTERN" value="${FILE_LOG_PATTERN}"/>-->
 
 <!-- 按照每天生成日志文件 -->
 <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
         <!-- 日志文件的文件名模式 -->
-        <FileNamePattern>D://JAVA//log//lyblog.%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+        <FileNamePattern>${LOG_FILE}-%i.log</FileNamePattern>
         <!-- 单个日志文件的最大大小 -->
         <maxFileSize>10MB</maxFileSize>
         <!-- 日志文件保留的最大历史天数 -->

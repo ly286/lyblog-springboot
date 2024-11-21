@@ -17,7 +17,7 @@ public class JsonUtil {
         try {
             return objectMapper.writeValueAsString(object);
         } catch (JsonProcessingException e) {
-            log.error("json序列化失败", e);
+            log.error("json序列化失败: {}", e.getMessage(), e);
             return object.toString();
         }
     }
