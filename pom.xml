@@ -8,7 +8,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.3.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
 
 
@@ -24,12 +24,12 @@
 
     <!-- 子模块管理 -->
     <modules>
-        <!-- 入口模块 -->
-        <module>lyblog-web</module>
-        <!-- 管理模块 -->
-        <module>lyblog-admin</module>
         <!-- 通用模块 -->
         <module>lyblog-common</module>
+        <!-- 管理模块 -->
+        <module>lyblog-admin</module>
+        <!-- 入口模块 -->
+        <module>lyblog-web</module>
     </modules>
 
     <url/>
@@ -56,6 +56,7 @@
     <properties>
         <!-- 项目版本号 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <springboot.version>3.3.5</springboot.version>
         <java.version>21</java.version>
         <revision>0.0.1-SNAPSHOT</revision>
         <!-- maven相关 -->
@@ -64,6 +65,7 @@
 
         <!-- 各依赖版本号 -->
         <guava.version>33.3.1-jre</guava.version>
+        <springdoc.version>2.6.0</springdoc.version>
     </properties>
 
 
@@ -71,22 +73,23 @@
     <dependencies>
         <dependency>
             <groupId>com.ly</groupId>
-            <artifactId>lyblog-admin</artifactId>
-            <version>${revision}</version>
+            <artifactId>lyblog-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.ly</groupId>
-            <artifactId>lyblog-common</artifactId>
-            <version>${revision}</version>
+            <artifactId>lyblog-admin</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+            <version>${springboot.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <version>${springboot.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -96,16 +99,32 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${springdoc.version}</version>
+        </dependency>
+
     </dependencies>
     </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+<!--    <build>-->
+<!--        <pluginManagement>-->
+<!--            <plugins>-->
+<!--                <plugin>-->
+<!--                    <groupId>org.apache.maven.plugins</groupId>-->
+<!--                    <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                    <version>3.10.1</version> &lt;!&ndash; 替换为最新版本 &ndash;&gt;-->
+<!--                    <configuration>-->
+<!--                        <source>${java.version}</source>-->
+<!--                        <target>${java.version}</target>-->
+<!--                    </configuration>-->
+<!--                </plugin>-->
+<!--            </plugins>-->
+<!--        </pluginManagement>-->
+<!--    </build>-->
+
 
 </project>

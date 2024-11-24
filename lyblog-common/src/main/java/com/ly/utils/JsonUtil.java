@@ -11,14 +11,13 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class JsonUtil {
-    private static final ObjectMapper objectMapper = new ObjectMapper();
+    private static final ObjectMapper INSTANCE = new ObjectMapper();
 
-    public static String toJsonString(Object object) {
+    public static String toJsonString(Object obj) {
         try {
-            return objectMapper.writeValueAsString(object);
+            return INSTANCE.writeValueAsString(obj);
         } catch (JsonProcessingException e) {
-            log.error("json序列化失败: {}", e.getMessage(), e);
-            return object.toString();
+            return obj.toString();
         }
     }
 }

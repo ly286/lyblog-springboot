@@ -1,11 +1,13 @@
 package com.ly.controller;
 
+
 import com.ly.aspect.ApiOperationLog;
 import com.ly.enums.ResponseCodeEnum;
 import com.ly.exception.BizException;
 import com.ly.model.User;
 import com.ly.utils.JsonUtil;
 import com.ly.utils.Response;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -15,6 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,6 +49,7 @@ public class TestController {
                     .stream()
                     .map(FieldError::getDefaultMessage)
                     .collect(Collectors.joining(", "));
+            log.error("校验失败:{}", errorMsg);
 
             return Response.fail(errorMsg);
         }
@@ -71,5 +77,21 @@ public class TestController {
     @ApiOperationLog(description = "测试接口")
     public Response test5(@RequestBody @Validated User user) {
         return Response.success();
+    }
+
+
+    @PostMapping("/test6")
+    @ApiOperationLog(description = "测试接口")
+    @Operation(summary = "测试接口")
+    public Response test6(@RequestBody @Validated User user) {
+        // 打印入参
+//        log.info(JsonUtil.toJsonString(user));
+
+        // 设置三种日期字段值
+        user.setCreateTime(LocalDateTime.now());
+        user.setUpdateDate(LocalDate.now());
+        user.setTime(LocalTime.now());
+
+        return Response.success(user);
     }
 }
